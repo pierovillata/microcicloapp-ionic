@@ -83,7 +83,7 @@ const opciones: AppPage[] = [
  
 ];
 
-const labels = ['Configuracion', 'Sincronizar', 'Login'];
+
 
 const Menu: React.FC = () => {
   const location = useLocation();
@@ -109,13 +109,7 @@ const Menu: React.FC = () => {
         </IonList>
 
          <IonList id="labels-list">
-          <IonListHeader>Opciones</IonListHeader>
-        {/*   {labels.map((label, index) => (
-            <IonItem lines="none" key={index}>
-              <IonIcon slot="start" icon={bookmarkOutline} />
-              <IonLabel>{label}</IonLabel>
-            </IonItem>
-          ))} */}
+          <IonListHeader>Opciones</IonListHeader>        
 
           {opciones.map((appPage, index) => {
             return (
