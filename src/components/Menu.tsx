@@ -11,7 +11,7 @@ import {
 } from '@ionic/react';
 
 import { useLocation } from 'react-router-dom';
-import {powerOutline,powerSharp, calendarOutline, calendarSharp,personOutline, personSharp,homeSharp, homeOutline, archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
+import {settingsOutline,settingsSharp,bicycleOutline, bicycleSharp,peopleOutline, peopleSharp,calendarOutline, calendarSharp,personOutline, personSharp,homeSharp, homeOutline, heartOutline, heartSharp, cloudUploadOutline, cloudUploadSharp,logInOutline,logInSharp,} from 'ionicons/icons';
 import './Menu.css';
 
 interface AppPage {
@@ -31,14 +31,14 @@ const appPages: AppPage[] = [
   {
     title: 'Deportes',
     url: '/page/Deportes',
-    iosIcon: powerOutline,
-    mdIcon: powerSharp
+    iosIcon: bicycleOutline,
+    mdIcon: bicycleSharp
   },
   {
     title: 'Atletas',
     url: '/page/Atletas',
-    iosIcon: personOutline,
-    mdIcon: personSharp
+    iosIcon: peopleOutline,
+    mdIcon: peopleSharp
   },
   {
     title: 'Perfiles',
@@ -49,8 +49,8 @@ const appPages: AppPage[] = [
   {
     title: 'Entrenadores',
     url: '/page/Entrenadores',
-    iosIcon: heartOutline,
-    mdIcon: heartSharp
+    iosIcon: personOutline,
+    mdIcon: personSharp
   },
   {
     title: 'Planes',
@@ -58,21 +58,32 @@ const appPages: AppPage[] = [
     iosIcon: calendarOutline,
     mdIcon: calendarSharp
   },
-  {
-    title: 'Trash',
-    url: '/page/Trash',
-    iosIcon: trashOutline,
-    mdIcon: trashSharp
-  },
-  {
-    title: 'Spam',
-    url: '/page/Spam',
-    iosIcon: warningOutline,
-    mdIcon: warningSharp
-  }
+ 
 ];
 
-const labels = ['Configuracion', 'Estilos', 'Login'];
+const opciones: AppPage[] = [
+  {
+    title: 'Configuracion',
+    url: '/page/Configuracion',
+    iosIcon: settingsOutline,
+    mdIcon: settingsSharp
+  },
+  {
+    title: 'Sincronizar',
+    url: '/page/Sincronizar',
+    iosIcon: cloudUploadOutline,
+    mdIcon: cloudUploadSharp
+  },
+  {
+    title: 'Login',
+    url: '/page/Login',
+    iosIcon: logInOutline,
+    mdIcon: logInSharp
+  },
+ 
+];
+
+const labels = ['Configuracion', 'Sincronizar', 'Login'];
 
 const Menu: React.FC = () => {
   const location = useLocation();
@@ -81,8 +92,8 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList id="inbox-list">
-          <IonListHeader>MicrocicloAPP</IonListHeader>
-          <IonNote>Programa tus entrenamientos</IonNote>
+          <IonListHeader>PeriodizatonAPP</IonListHeader>
+          <IonNote>Periodiza tus</IonNote>
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
@@ -93,17 +104,30 @@ const Menu: React.FC = () => {
               </IonMenuToggle>
             );
           })}
+
+          
         </IonList>
 
-        <IonList id="labels-list">
+         <IonList id="labels-list">
           <IonListHeader>Opciones</IonListHeader>
-          {labels.map((label, index) => (
+        {/*   {labels.map((label, index) => (
             <IonItem lines="none" key={index}>
               <IonIcon slot="start" icon={bookmarkOutline} />
               <IonLabel>{label}</IonLabel>
             </IonItem>
-          ))}
-        </IonList>
+          ))} */}
+
+          {opciones.map((appPage, index) => {
+            return (
+              <IonMenuToggle key={index} autoHide={false}>
+                <IonItem className={location.pathname === appPage.url ? 'selected' : ''} routerLink={appPage.url} routerDirection="none" lines="none" detail={false}>
+                  <IonIcon slot="start" ios={appPage.iosIcon} md={appPage.mdIcon} />
+                  <IonLabel>{appPage.title}</IonLabel>
+                </IonItem>
+              </IonMenuToggle>
+            );
+          })}
+        </IonList> 
       </IonContent>
     </IonMenu>
   );
