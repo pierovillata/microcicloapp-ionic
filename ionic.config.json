@@ -1,0 +1,7 @@
+{
+  "name": "microcicloapp-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
